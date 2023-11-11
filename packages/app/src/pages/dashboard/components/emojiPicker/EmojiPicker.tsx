@@ -1,3 +1,4 @@
+import { Card } from 'components'
 import React, { ComponentPropsWithoutRef, forwardRef, useCallback } from 'react'
 import { VirtuosoGrid } from 'react-virtuoso'
 import { twMerge } from 'tailwind-merge'
@@ -7,7 +8,9 @@ import { useSelectedEmojis } from '@/emojis/hooks/useSelectedEmojis'
 import emojis from '../../../../emojis/fixtures/emojis.json'
 import { EmojiButton } from '../emojiButton/EmojiButton'
 
-export const EmojiPicker = () => {
+type Props = ComponentPropsWithoutRef<'div'>
+
+export const EmojiPicker = ({ className = '' }: Props) => {
   const [_, setSelectedEmojis] = useSelectedEmojis()
 
   const onEmojiClick = useCallback(
@@ -18,29 +21,30 @@ export const EmojiPicker = () => {
   )
 
   return (
-    <VirtuosoGrid
-      className="border-theme-border dark:border-dark-theme-border h-full border-t"
-      totalCount={emojis.emojis.length}
-      overscan={200}
-      itemContent={index => (
-        <EmojiButton
-          onClick={() => onEmojiClick(emojis.emojis[index])}
-          style={{
-            // triggers hardware acceleration necessary to fix rendering issues when scrolling quickly
-            transform: 'translateZ(0)',
-          }}
-        >
-          {emojis.emojis[index]}
-        </EmojiButton>
-      )}
-      components={{
-        List: forwardRef(({ className = '', ...props }: ComponentPropsWithoutRef<'div'>, ref) => (
-          <div ref={ref} {...props} className={twMerge('flex flex-wrap justify-center', className)} />
-        )),
-        Item: ({ className = '', ...props }: ComponentPropsWithoutRef<'div'>) => (
-          <div {...props} className={twMerge('', className)} />
-        ),
-      }}
-    />
+    <Card className={twMerge('pb-0', className)}>
+      <VirtuosoGrid
+        className="pb-12"
+        totalCount={emojis.emojis.length}
+        itemContent={index => (
+          <EmojiButton
+            onClick={() => onEmojiClick(emojis.emojis[index])}
+            style={{
+              // triggers hardware acceleration necessary to fix rendering issues when scrolling quickly
+              transform: 'translateZ(0)',
+            }}
+          >
+            {emojis.emojis[index]}
+          </EmojiButton>
+        )}
+        components={{
+          List: forwardRef(({ className = '', ...props }: ComponentPropsWithoutRef<'div'>, ref) => (
+            <div ref={ref} {...props} className={twMerge('flex flex-wrap justify-center', className)} />
+          )),
+          Item: ({ className = '', ...props }: ComponentPropsWithoutRef<'div'>) => (
+            <div {...props} className={twMerge('', className)} />
+          ),
+        }}
+      />
+    </Card>
   )
 }

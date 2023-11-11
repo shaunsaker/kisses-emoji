@@ -21,8 +21,17 @@ export const EmojiPicker = () => {
     <VirtuosoGrid
       className="border-theme-border dark:border-dark-theme-border h-full border-t"
       totalCount={emojis.emojis.length}
+      overscan={200}
       itemContent={index => (
-        <EmojiButton onClick={() => onEmojiClick(emojis.emojis[index])}>{emojis.emojis[index]}</EmojiButton>
+        <EmojiButton
+          onClick={() => onEmojiClick(emojis.emojis[index])}
+          style={{
+            // triggers hardware acceleration necessary to fix rendering issues when scrolling quickly
+            transform: 'translateZ(0)',
+          }}
+        >
+          {emojis.emojis[index]}
+        </EmojiButton>
       )}
       components={{
         List: forwardRef(({ className = '', ...props }: ComponentPropsWithoutRef<'div'>, ref) => (

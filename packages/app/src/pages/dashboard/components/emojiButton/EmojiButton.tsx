@@ -6,7 +6,7 @@ type Props = ComponentPropsWithoutRef<'button'>
 
 export const EmojiButton = ({ className = '', children, ...props }: Props) => {
   return (
-    <Button className={twMerge('h-16 w-16 p-0 text-4xl hover:scale-90', className)} variant="light" {...props}>
+    <Button className={twMerge('h-20 w-20 bg-white p-0 text-5xl hover:scale-90', className)} variant="light" {...props}>
       {children}
     </Button>
   )

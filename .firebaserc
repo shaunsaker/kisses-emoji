@@ -1,30 +1,30 @@
 {
   "projects": {
-    "development": "the-shell-development",
-    "staging": "the-shell-development",
-    "production": "the-shell-production"
+    "development": "kisses-emoji-staging",
+    "staging": "kisses-emoji-staging",
+    "production": "kisses-emoji-production"
   },
   "targets": {
-    "the-shell-development": {
+    "kisses-emoji-staging": {
       "hosting": {
         "app": [
-          "the-shell-development"
+          "kisses-emoji-staging"
         ],
         "storybook": [
-          "the-shell-development-storybook-ui"
+          "kisses-emoji-staging-storybook"
         ],
         "website": [
-          "the-shell-development-website"
+          "kisses-emoji-staging-website"
         ]
       }
     },
-    "the-shell-production": {
+    "kisses-emoji-production": {
       "hosting": {
         "app": [
-          "the-shell-production"
+          "kisses-emoji-production"
         ],
         "website": [
-          "the-shell-production-website"
+          "kisses-emoji-production-website"
         ]
       }
     }

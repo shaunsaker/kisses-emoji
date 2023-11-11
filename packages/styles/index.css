@@ -34,7 +34,7 @@ p {
 }
 
 small {
-  @apply text-sm font-normal;
+  @apply block text-sm font-normal;
 }
 
 a {

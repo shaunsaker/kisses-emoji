@@ -1,5 +1,5 @@
 import { ClipboardDocumentIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { Button, Card } from 'components'
+import { Button, Card, ParagraphText, TitleText } from 'components'
 import React from 'react'
 import toast from 'react-hot-toast'
 
@@ -11,7 +11,7 @@ export const SelectedEmojiRenderer = () => {
   const [selectedEmojis, setSelectedEmojis] = useSelectedEmojis()
 
   return (
-    <div className="m-8 h-full overflow-hidden">
+    <div className="h-full overflow-hidden p-8">
       <Card className="flex h-full flex-col gap-y-4">
         <div className="flex justify-end gap-x-4">
           <Button
@@ -35,7 +35,15 @@ export const SelectedEmojiRenderer = () => {
           </Button>
         </div>
 
-        <div className="flex flex-wrap justify-center overflow-y-auto">
+        <div className="flex h-full flex-wrap justify-center overflow-y-auto">
+          {!selectedEmojis.length && (
+            <div className="flex flex-col gap-y-4 text-center">
+              <TitleText>Hey Lala and friends 👋🏻</TitleText>
+
+              <ParagraphText>Click on an emoji to get started 🤠</ParagraphText>
+            </div>
+          )}
+
           {selectedEmojis.map((emoji, index) => (
             <EmojiButton
               key={index}

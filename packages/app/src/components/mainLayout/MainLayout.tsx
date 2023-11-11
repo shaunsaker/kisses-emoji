@@ -1,10 +1,9 @@
-import { Cog6ToothIcon, EnvelopeOpenIcon, HomeModernIcon } from '@heroicons/react/24/outline'
+import { EnvelopeOpenIcon, HomeModernIcon } from '@heroicons/react/24/outline'
 import { Popover, Sidebar } from 'components'
 import React, { ComponentProps } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { isExternalLink, useLink } from 'utils'
 
-import { useHasActiveSubscription } from '@/billing/hooks/useHasActiveSubscription'
 import { routes } from '@/router/routes'
 import { useSidebarOpen } from '@/sidebar/hooks/useSidebarOpen'
 
@@ -14,7 +13,6 @@ type NavigationItem = ComponentProps<typeof Sidebar>['items'][0]
 
 export const MainLayout = () => {
   const location = useLocation()
-  const { data: hasActiveSubscription, isLoading: hasActiveSubscriptionLoading } = useHasActiveSubscription()
   const [sidebarOpen, setSidebarOpen] = useSidebarOpen()
 
   const navigate = useNavigate()
@@ -26,13 +24,6 @@ export const MainLayout = () => {
       href: routes.dashboard,
       icon: <HomeModernIcon />,
       active: location.pathname === routes.dashboard,
-      disabled: hasActiveSubscriptionLoading || !hasActiveSubscription,
-    },
-    {
-      name: 'Settings',
-      href: routes.settings,
-      icon: <Cog6ToothIcon />,
-      active: location.pathname.startsWith(routes.settings),
     },
     {
       name: 'Support',

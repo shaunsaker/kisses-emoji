@@ -1,5 +1,5 @@
 import { ClipboardDocumentIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { Button, Card, ParagraphText, TitleText } from 'components'
+import { Button, ParagraphText, TitleText } from 'components'
 import React, { ComponentPropsWithoutRef } from 'react'
 import toast from 'react-hot-toast'
 import { twMerge } from 'tailwind-merge'
@@ -16,7 +16,7 @@ export const SelectedEmojiRenderer = ({ className = '', ...props }: Props) => {
   const actionsDisabled = !selectedEmojis.length
 
   return (
-    <Card className={twMerge('flex flex-col gap-y-4', className)} {...props}>
+    <div className={twMerge('flex flex-col gap-y-8', className)} {...props}>
       <div className="flex justify-end gap-x-4">
         <Button
           className="h-10 w-10 rounded-full p-0"
@@ -53,6 +53,6 @@ export const SelectedEmojiRenderer = ({ className = '', ...props }: Props) => {
           </EmojiButton>
         ))}
       </div>
-    </Card>
+    </div>
   )
 }

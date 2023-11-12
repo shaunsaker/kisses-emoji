@@ -21,30 +21,32 @@ export const EmojiPicker = ({ className = '' }: Props) => {
   )
 
   return (
-    <Card className={twMerge('pb-0', className)}>
-      <VirtuosoGrid
-        className="pb-12"
-        totalCount={emojis.emojis.length}
-        itemContent={index => (
-          <EmojiButton
-            onClick={() => onEmojiClick(emojis.emojis[index])}
-            style={{
-              // triggers hardware acceleration necessary to fix rendering issues when scrolling quickly
-              transform: 'translateZ(0)',
-            }}
-          >
-            {emojis.emojis[index]}
-          </EmojiButton>
-        )}
-        components={{
-          List: forwardRef(({ className = '', ...props }: ComponentPropsWithoutRef<'div'>, ref) => (
-            <div ref={ref} {...props} className={twMerge('flex flex-wrap justify-center', className)} />
-          )),
-          Item: ({ className = '', ...props }: ComponentPropsWithoutRef<'div'>) => (
-            <div {...props} className={twMerge('', className)} />
-          ),
-        }}
-      />
-    </Card>
+    <div className={twMerge('', className)}>
+      <Card className="h-full p-0">
+        <VirtuosoGrid
+          // className="pb-12"
+          totalCount={emojis.emojis.length}
+          itemContent={index => (
+            <EmojiButton
+              onClick={() => onEmojiClick(emojis.emojis[index])}
+              style={{
+                // triggers hardware acceleration necessary to fix rendering issues when scrolling quickly
+                transform: 'translateZ(0)',
+              }}
+            >
+              {emojis.emojis[index]}
+            </EmojiButton>
+          )}
+          components={{
+            List: forwardRef(({ className = '', ...props }: ComponentPropsWithoutRef<'div'>, ref) => (
+              <div ref={ref} {...props} className={twMerge('flex flex-wrap justify-center', className)} />
+            )),
+            Item: ({ className = '', ...props }: ComponentPropsWithoutRef<'div'>) => (
+              <div {...props} className={twMerge('', className)} />
+            ),
+          }}
+        />
+      </Card>
+    </div>
   )
 }

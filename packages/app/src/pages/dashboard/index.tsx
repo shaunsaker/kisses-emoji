@@ -11,11 +11,13 @@ export const Dashboard = () => {
     <>
       <Header />
 
-      <PageLayout className="flex flex-col">
-        <SelectedEmojiRenderer className="mb-8 flex-1" />
+      <div className="flex h-full flex-col">
+        <PageLayout className="flex-1">
+          <SelectedEmojiRenderer />
+        </PageLayout>
 
-        <EmojiPicker className="-mb-8 flex-[2] lg:-mb-12" />
-      </PageLayout>
+        <EmojiPicker className="flex-[2]" />
+      </div>
     </>
   )
 }

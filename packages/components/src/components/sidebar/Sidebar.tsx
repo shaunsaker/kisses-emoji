@@ -2,8 +2,10 @@ import { ReactNode } from 'react'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { AnchorText } from '../anchorText/AnchorText'
 import { Button } from '../button/Button'
 import { Logo } from '../logo/Logo'
+import { SmallText } from '../smallText/SmallText'
 
 type Props = {
   items: {
@@ -51,6 +53,19 @@ export const Sidebar = ({ items, onItemClick }: Props) => {
           })}
         </ul>
       </nav>
+
+      <SmallText className="dark:text-dark-theme-content text-theme-content-inverted">
+        Made with ❤️ by{' '}
+        <AnchorText
+          className="dark:text-dark-theme-content text-theme-content-inverted"
+          href="https://cofoundly.dev"
+          target="_blank"
+          rel="noopener noreferer"
+        >
+          Cofoundly.dev
+        </AnchorText>
+        .
+      </SmallText>
     </div>
   )
 }

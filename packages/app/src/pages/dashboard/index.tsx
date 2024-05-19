@@ -12,7 +12,7 @@ export const Dashboard = () => {
       <Header />
 
       <div className="flex h-full flex-col">
-        <PageLayout className="flex-1">
+        <PageLayout className="flex flex-1 flex-col overflow-hidden">
           <SelectedEmojiRenderer />
         </PageLayout>
 

@@ -24,7 +24,6 @@ export const EmojiPicker = ({ className = '' }: Props) => {
     <div className={twMerge('', className)}>
       <Card className="h-full p-0">
         <VirtuosoGrid
-          // className="pb-12"
           totalCount={emojis.emojis.length}
           itemContent={index => (
             <EmojiButton
